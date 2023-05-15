@@ -17,7 +17,7 @@ public class Sheet implements Environment{
     
     public Sheet(){
         this.sheetMap = new HashMap<String, Slot>();
-        this.status = new Status();
+        this.status = new Status("");
     }
 
     /**
@@ -99,6 +99,26 @@ public class Sheet implements Environment{
 
     public Slot getSlot(String slotName){
         return sheetMap.get(slotName);
+    }
+
+    public void clearAll(){
+        sheetMap.clear();
+        status.clearStatus();
+    }
+
+    public void clearSlot(String slotName){
+        if(sheetMap.containsKey(slotName)){
+            sheetMap.put(slotName, null);
+            status.clearStatus();
+        }
+    }
+
+    public void load(Map<String, Slot> loadMap){
+        sheetMap = loadMap;
+    }
+
+    public Map<String, Slot> getMap(){
+        return sheetMap;
     }
 
     @Override
