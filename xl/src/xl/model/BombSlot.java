@@ -13,4 +13,8 @@ public class BombSlot implements Slot {
         return (Double) null;
     }
     
+    @Override
+    public String toString(){
+        return "Bomb";
+    }
 }

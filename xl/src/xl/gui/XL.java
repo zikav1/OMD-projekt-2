@@ -7,12 +7,14 @@ import static java.awt.BorderLayout.SOUTH;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import xl.gui.menu.XLMenuBar;
+import xl.model.*;
 
 public class XL extends JFrame {
 
     private static final int ROWS = 10, COLUMNS = 8;
     private XLCounter counter;
-    private StatusLabel statusLabel = new StatusLabel();
+    private CurrentSlot currentSlot;
+    private Sheet sheet;
     private XLList xlList;
 
     public XL(XL oldXL) {
@@ -21,13 +23,19 @@ public class XL extends JFrame {
 
     public XL(XLList xlList, XLCounter counter) {
         super("Untitled-" + counter);
+
         this.xlList = xlList;
         this.counter = counter;
+        this.sheet = new Sheet();
+        this.currentSlot = new CurrentSlot();
+
+
         xlList.add(this);
         counter.increment();
-        JPanel statusPanel = new StatusPanel(statusLabel);
-        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS);
-        Editor editor = new Editor();
+        StatusLabel statusLabel = new StatusLabel(sheet);
+        JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
+        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, sheet, currentSlot);
+        Editor editor = new Editor(sheet, currentSlot);
         add(NORTH, statusPanel);
         add(CENTER, editor);
         add(SOUTH, sheetPanel);

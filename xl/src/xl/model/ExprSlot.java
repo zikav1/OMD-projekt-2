@@ -17,5 +17,10 @@ public class ExprSlot implements Slot {
         // Return value of expression
         return expr.value(environment);
     }
+
+    @Override
+    public String toString(){
+        return expr.toString();
+    }
     
 }

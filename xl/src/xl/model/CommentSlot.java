@@ -15,4 +15,9 @@ public class CommentSlot implements Slot{
         // Return 0
         return 0.0;
     }
+
+    @Override
+    public String toString(){
+        return comment;
+    }
 }
