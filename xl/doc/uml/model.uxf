@@ -1,20 +1,20 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>636</x><y>90</y><w>220</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>540</x><y>210</y><w>220</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 Slot
 --
 +getSlotValue(Environment): double
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>606</x><y>320</y><w>220</w><h>100</h></coordinates><panel_attributes>ExprSlot
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>440</y><w>220</w><h>100</h></coordinates><panel_attributes>ExprSlot
 --
 -expression: Expr
 --
 +getSlotValue(Environment): double
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>366</x><y>320</y><w>220</w><h>100</h></coordinates><panel_attributes>CommentSlot
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>440</y><w>220</w><h>100</h></coordinates><panel_attributes>CommentSlot
 --
 -comment: String
 --
 +getSlotValue(Environment): double
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>726</x><y>150</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>210</y><w>140</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>120;10;10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>566</x><y>210</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;170;10;170;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>96</x><y>60</y><w>210</w><h>180</h></coordinates><panel_attributes>Sheet
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>270</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>330</y><w>140</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>120;10;10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>330</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;170;10;170;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>180</y><w>210</w><h>180</h></coordinates><panel_attributes>Sheet
 --
 -sheetMap: Map&lt;K,V&gt;
 -status: Status
@@ -26,15 +26,15 @@ Slot
 +load(Map&lt;K,V&gt;):
 +getSlot(String): Slot
 +getSlots(): Map&lt;K,V&gt;
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>96</x><y>320</y><w>210</w><h>100</h></coordinates><panel_attributes>Status
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>210</w><h>100</h></coordinates><panel_attributes>Status
 --
 -status: String
 --
 +clearStatus():
 +getStatus(): String
-+setStatus(String):</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>846</x><y>320</y><w>220</w><h>100</h></coordinates><panel_attributes>BombSlot
++setStatus(String):</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>440</y><w>220</w><h>100</h></coordinates><panel_attributes>BombSlot
 --
 -expression: Expr
 --
 +getSlotValue(Environment): double
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>676</x><y>210</y><w>300</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;280;10;280;110</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>330</y><w>300</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;280;10;280;110</additional_attributes></element></diagram>
