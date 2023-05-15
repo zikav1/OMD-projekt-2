@@ -7,15 +7,15 @@ public class ExprSlot implements Slot {
 
     private Expr expr;
 
-    public ExprSlot(){
+    public ExprSlot(Expr expr){
         this.expr = expr;
     }
 
 
     @Override
     public double getSlotValue(Environment environment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSlotValue'");
+        // Return value of expression
+        return expr.value(environment);
     }
     
 }

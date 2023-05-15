@@ -6,13 +6,13 @@ public class CommentSlot implements Slot{
     
     private String comment;
 
-    public CommentSlot(){
+    public CommentSlot(String comment){
         this.comment = comment;
     }
 
     @Override
     public double getSlotValue(Environment environment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSlotValue'");
+        // Return 0
+        return 0.0;
     }
 }

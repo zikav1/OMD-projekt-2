@@ -10,8 +10,7 @@ public class BombSlot implements Slot {
 
     @Override
     public double getSlotValue(Environment environment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSlotValue'");
+        return (Double) null;
     }
     
 }
