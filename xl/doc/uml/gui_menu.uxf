@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>288</x><y>72</y><w>200</w><h>128</h></coordinates><panel_attributes>OpenMenuItem
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>136</x><y>0</y><w>200</w><h>128</h></coordinates><panel_attributes>OpenMenuItem
 --
 #statusLabel: StatusLabel
 #xl: XL
@@ -8,29 +8,32 @@
 
 #action(String):
 +actionPerformed(ActionEvent):
-#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>168</x><y>264</y><w>200</w><h>128</h></coordinates><panel_attributes>SaveMenuItem
---
---
-&lt;&lt;constructor&gt;&gt;
-+SaveMenuItem(XL, StatusLabel)
-
-#action(String):
-#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>392</x><y>264</y><w>200</w><h>128</h></coordinates><panel_attributes>LoadMenuItem
---
---
-&lt;&lt;constructor&gt;&gt;
-+LoadMenuItem(XL, StatusLabel)
-
-#action(String):
-#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>192</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>224</y><w>144</w><h>56</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;160;10;160;50</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>224</y><w>120</w><h>56</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>130;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>688</x><y>80</y><w>200</w><h>96</h></coordinates><panel_attributes>ClearMenuItem
+#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>16</x><y>192</y><w>200</w><h>128</h></coordinates><panel_attributes>SaveMenuItem
 --
 -sheet: Sheet
 --
 &lt;&lt;constructor&gt;&gt;
-+ClearMenuItem(Sheet)
++SaveMenuItem(XL, StatusLabel, Sheet)
+
+#action(String):
+#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>192</y><w>200</w><h>128</h></coordinates><panel_attributes>LoadMenuItem
+--
+-sheet: Sheet
+--
+&lt;&lt;constructor&gt;&gt;
++LoadMenuItem(XL, StatusLabel,Sheet)
+
+#action(String):
+#openDialog(JFileChooser): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>120</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>152</y><w>144</w><h>56</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;160;10;160;50</additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>152</y><w>120</w><h>56</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>130;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>8</y><w>200</w><h>96</h></coordinates><panel_attributes>ClearMenuItem
+--
+-sheet: Sheet
+-currentSlot: CurrentSlot
+--
+&lt;&lt;constructor&gt;&gt;
++ClearMenuItem(Sheet, CurrentSlot)
 
 +actionPerformed(ActionEvent):
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>80</y><w>200</w><h>96</h></coordinates><panel_attributes>ClearAllMenuItem
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>752</x><y>8</y><w>200</w><h>96</h></coordinates><panel_attributes>ClearAllMenuItem
 --
 -sheet: Sheet
 --
@@ -38,7 +41,7 @@
 +ClearAllMenuItem(Sheet)
 
 +actionPerformed(ActionEvent):
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>688</x><y>200</y><w>200</w><h>104</h></coordinates><panel_attributes>CloseMenuItem
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>128</y><w>200</w><h>104</h></coordinates><panel_attributes>CloseMenuItem
 --
 -xl: XL
 -xlList: XLList
@@ -47,7 +50,7 @@
 +CloseMenuItem(XL, XLList)
 
 +actionPerformed(ActionEvent):
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>200</y><w>200</w><h>104</h></coordinates><panel_attributes>NewMenuItem
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>752</x><y>128</y><w>200</w><h>104</h></coordinates><panel_attributes>NewMenuItem
 --
 -xl: XL
 --
@@ -55,7 +58,7 @@
 +NewMenuItem(XL)
 
 +actionPerformed(ActionEvent):
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>688</x><y>328</y><w>200</w><h>104</h></coordinates><panel_attributes>WindowMenuItem
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>256</y><w>200</w><h>104</h></coordinates><panel_attributes>WindowMenuItem
 --
 -xl: XL
 
@@ -64,7 +67,7 @@
 +WindowMenuItem(XL)
 
 +actionPerformed(ActionEvent):
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>328</y><w>200</w><h>104</h></coordinates><panel_attributes>WindowMenu
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>752</x><y>256</y><w>200</w><h>104</h></coordinates><panel_attributes>WindowMenu
 --
 -xlList: XLList
 
@@ -73,11 +76,11 @@
 +WindowMenuItem(XLList)
 
 +update(Observable , Object)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>168</x><y>416</y><w>200</w><h>104</h></coordinates><panel_attributes>XLMenuBar
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>16</x><y>344</y><w>256</w><h>104</h></coordinates><panel_attributes>XLMenuBar
 --
 
 --
 &lt;&lt;constructor&gt;&gt;
-+XLMenuBar(XL,XLList, StatusLabel)
++XLMenuBar(XL,XLList, StatusLabel, Sheet, CurrentSlot)
 
 </panel_attributes><additional_attributes></additional_attributes></element></diagram>
