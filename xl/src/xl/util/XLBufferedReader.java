@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Map;
+import xl.model.Slot;
+import xl.model.SlotFactory;
 
 // TODO move to another package
 public class XLBufferedReader extends BufferedReader {
@@ -12,13 +14,12 @@ public class XLBufferedReader extends BufferedReader {
         super(new FileReader(name));
     }
 
-    // TODO Change Object to something appropriate
-    public void load(Map<String, Object> map) {
+    public void load(Map<String, Slot> map) {
         try {
             while (ready()) {
                 String string = readLine();
                 int i = string.indexOf('=');
-                // TODO
+                map.put(string.substring(0, i), SlotFactory.newSlot(string.substring(i+1)));
             }
         } catch (Exception e) {
             throw new XLException(e.getMessage());

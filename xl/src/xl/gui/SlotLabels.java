@@ -74,6 +74,7 @@ public class SlotLabels extends GridPanel implements Observer{
                     label.setText("" + slot.getSlotValue(sheet));
                 }
             }
+            else label.setText("                    ");
         }
     }
 }
