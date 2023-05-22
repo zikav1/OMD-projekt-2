@@ -7,6 +7,8 @@ import java.util.Observable;
 
 import xl.expr.ExprParser;
 import xl.util.XLException;
+import xl.util.XLBufferedReader;
+import xl.util.XLPrintStream;
 import xl.expr.Environment;
 import xl.expr.Expr;
 
@@ -59,13 +61,20 @@ public class Sheet extends Observable implements Environment {
             return false;
         }
 
-        // Check for reference to blank slot
+        // Check for reference to blank slot or division by zero
         try{
             expr.value(this);
         }
         catch(NullPointerException e){
             System.out.println("Blank slots resulting in null value");
             status.setStatus("Blank slots resulting in null value");
+            setChanged();
+            notifyObservers();
+            return false;
+        }
+        catch(XLException e2){
+            System.out.println("Division by zero");
+            status.setStatus("Division by zero");
             setChanged();
             notifyObservers();
             return false;
@@ -80,8 +89,27 @@ public class Sheet extends Observable implements Environment {
             return false;
         }
 
-        // Passed checks, save expression
+        // Save new expression and iterate through map, effectively just checking for new divisions by zer0   
+        Slot temp;
+        if(sheetMap.containsKey(slotName)) temp = sheetMap.get(slotName);
+        else temp = null;
         sheetMap.put(slotName, new ExprSlot(expr));
+
+        for(Map.Entry<String, Slot> slot : sheetMap.entrySet()){
+            try{
+                slot.getValue().getSlotValue(this);
+            }
+            catch(XLException e){
+                status.setStatus("Division by zero in cell " + slot.getKey());
+                if(temp != null) sheetMap.put(slotName, temp);
+                else sheetMap.remove(slotName);
+                setChanged();
+                notifyObservers();
+                return false;
+            }
+        }
+
+        // All ok
         setChanged();
         notifyObservers();
         return true;
@@ -111,8 +139,19 @@ public class Sheet extends Observable implements Environment {
         return false;
     }
 
-    public Slot getSlot(String slotName){
-        return sheetMap.get(slotName);
+    public String getFormula(String slotName){
+        if(sheetMap.containsKey(slotName)) return sheetMap.get(slotName).toString();
+        else return "";
+    }
+
+    public String getDisplayString(String slotName){
+        if(sheetMap.containsKey(slotName)) {
+            Slot slot = sheetMap.get(slotName);
+            // Check if comment
+            if(slot.toString().startsWith("#")) return slot.toString();
+            else return "" + sheetMap.get(slotName).getSlotValue(this);
+        }
+        else return "                    ";
     }
 
     public void clearAll(){
@@ -123,18 +162,48 @@ public class Sheet extends Observable implements Environment {
     }
 
     public void clearSlot(String slotName){
+
         if(sheetMap.containsKey(slotName)){
+            Slot temp = sheetMap.get(slotName);
             sheetMap.remove(slotName);
+
+            for(Map.Entry<String, Slot> slot : sheetMap.entrySet()){
+                try{
+                    slot.getValue().getSlotValue(this);
+                }
+                catch(NullPointerException e){
+                    status.setStatus("Blank slot reference in cell " + slot.getKey());
+                    sheetMap.put(slotName,temp);
+                    setChanged();
+                    notifyObservers();
+                    return;
+                }
+            }
+
             status.clearStatus();
         }
         setChanged();
         notifyObservers();
-    }
 
-    public void load(Map<String, Slot> loadMap){
-        sheetMap = loadMap;
+        }
+
+    public void load(XLBufferedReader reader){
+        
+        reader.load(sheetMap);
         setChanged();
         notifyObservers();
+        
+        try{
+            reader.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void save(XLPrintStream writer){
+        writer.save(sheetMap.entrySet(), this);
+        writer.close();
     }
 
     public Map<String, Slot> getMap(){

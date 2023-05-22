@@ -32,8 +32,7 @@ public class Editor extends JTextField implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        Slot slot = sheet.getSlot(currentSlot.getAddress());
-        if(slot != null) setText(slot.toString());
-        else setText("");
+        String string = sheet.getFormula(currentSlot.getAddress());
+        setText(string);
     }
 }

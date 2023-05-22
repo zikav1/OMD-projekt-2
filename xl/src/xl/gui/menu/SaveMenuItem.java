@@ -23,12 +23,9 @@ class SaveMenuItem extends OpenMenuItem {
     }
 
     protected void action(String path) throws FileNotFoundException {
-        Map<String, Slot> sheetMap = sheet.getMap();
 
         XLPrintStream writer = new XLPrintStream(path);
-        
-        writer.save(sheetMap.entrySet(), sheet);
-        writer.close();
+        sheet.save(writer);
     }
 
     protected int openDialog(JFileChooser fileChooser) {

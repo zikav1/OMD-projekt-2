@@ -24,17 +24,7 @@ class LoadMenuItem extends OpenMenuItem {
 
     protected void action(String path) throws FileNotFoundException {
         XLBufferedReader reader = new XLBufferedReader(path);
-        Map<String, Slot> sheetMap = new HashMap<String, Slot>();
-
-        reader.load(sheetMap);
-        sheet.load(sheetMap);
-
-        try{
-            reader.close();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+        sheet.load(reader);
     }
 
     protected int openDialog(JFileChooser fileChooser) {

@@ -57,24 +57,17 @@ public class SlotLabels extends GridPanel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        Map<String, Slot> sheetMap = sheet.getMap();
 
         for(SlotLabel label : labelList){
-            if(sheetMap.containsKey(label.getAddress())){
+            String address = label.getAddress();
+            String string = sheet.getDisplayString(address);
 
-                Slot slot = sheetMap.get(label.getAddress());
-
-                // Check if comment
-                if(slot.toString().startsWith("#")){
-                    label.setText(slot.toString().substring(1));
-                }
-
-                // Not comment
-                else{
-                    label.setText("" + slot.getSlotValue(sheet));
-                }
+            // Check if comment
+            if(string.startsWith("#")){
+                label.setText(string.substring(1));
             }
-            else label.setText("                    ");
+            // Not comment
+            else label.setText(string);
         }
     }
 }
